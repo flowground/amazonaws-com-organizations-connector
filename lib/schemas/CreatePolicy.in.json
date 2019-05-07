@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "Content": "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"s3:*\\\"}}",
+                "Description": "Enables admins of attached accounts to delegate all S3 permissions",
+                "Name": "AllowAllS3Actions",
+                "Type": "SERVICE_CONTROL_POLICY"
+            },
+            "properties": {
+                "Content": {
+                    "description": "The policy content to add to the new policy. For example, if you create a <a href=\"https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html\">service control policy</a> (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see <a href=\"https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html\">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.",
+                    "maxLength": 1000000,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Description": {
+                    "description": "An optional description to assign to the policy.",
+                    "maxLength": 512,
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "<p>The friendly name to assign to the policy.</p> <p>The <a href=\"http://wikipedia.org/wiki/regex\">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Type": {
+                    "description": "<p>The type of policy to create.</p> <note> <p>In the current release, the only type of policy that you can create is a service control policy (SCP).</p> </note>",
+                    "enum": [
+                        "SERVICE_CONTROL_POLICY"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Content",
+                "Description",
+                "Name",
+                "Type"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

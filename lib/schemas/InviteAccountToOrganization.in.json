@@ -1,0 +1,88 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "Notes": "This is a request for Juan's account to join Bill's organization",
+                "Target": {
+                    "Id": "juan@example.com",
+                    "Type": "EMAIL"
+                }
+            },
+            "properties": {
+                "Notes": {
+                    "description": "Additional information that you want to include in the generated email to the recipient account owner.",
+                    "format": "password",
+                    "maxLength": 1024,
+                    "type": "string"
+                },
+                "Target": {
+                    "description": "<p>The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements: </p> <p> <code>{ \"Type\": \"ACCOUNT\", \"Id\": \"&lt;<i> <b>account id number</b> </i>&gt;\" }</code> </p> <p>If you use the AWS CLI, you can submit this as a single string, similar to the following example:</p> <p> <code>--target Id=123456789012,Type=ACCOUNT</code> </p> <p>If you specify <code>\"Type\": \"ACCOUNT\"</code>, then you must provide the AWS account ID number as the <code>Id</code>. If you specify <code>\"Type\": \"EMAIL\"</code>, then you must specify the email address that is associated with the account.</p> <p> <code>--target Id=diego@example.com,Type=EMAIL</code> </p>",
+                    "properties": {
+                        "Id": {
+                            "description": "<p>The unique identifier (ID) for the party.</p> <p>The <a href=\"http://wikipedia.org/wiki/regex\">regex pattern</a> for handshake ID string requires \"h-\" followed by from 8 to 32 lower-case letters or digits.</p>",
+                            "format": "password",
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "Type": {
+                            "description": "The type of party.",
+                            "enum": [
+                                "ACCOUNT",
+                                "ORGANIZATION",
+                                "EMAIL"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Id",
+                        "Type"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "Target"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
